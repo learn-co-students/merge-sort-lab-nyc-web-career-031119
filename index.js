@@ -7,7 +7,7 @@ function findMinAndRemove(array) {
       minIndex = i
     }
   }
-  array = array.slice(0, minIndex).concat(array.slice(minIndex+1))
+  array.splice(minIndex, 1)
   return min
 }
 
@@ -40,8 +40,8 @@ function merge(firstHalf, secondHalf) {
 function mergeSort(array) {
   let sortedArray = sortArray(array)
   let midpoint = sortedArray.length/2
-  let firstHalf = sortedArray[0, midpoint]
-  let secondHalf = sortedArray[midpoint, sortedArray.length]
+  let firstHalf = sortedArray.slice(0, midpoint)
+  let secondHalf = sortedArray.slice(midpoint, sortedArray.length)
 
   if (sortedArray.length > 2) {
     return merge(mergeSort(firstHalf), mergeSort(secondHalf))
